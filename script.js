@@ -52,6 +52,8 @@ for (var i = 0; i < questions[0].potential_answers.length; i++) {
 
 }
 
+var count = localStorage.getItem("count");
+
 
 
 // // Function that tells user whether or not the answer is correct
@@ -65,15 +67,26 @@ function seeResults(event) {
     if(selected === correctAnswer){
         // return "Correct!"
         alert("Correct!")
+
+    count++;
+    // counter.textContent = count;
+
+    localStorage.setItem("count", count);
     }
     else {
         // return "Incorrect!"
         alert("Incorrect!")
+
+    count--;
+    // counter.textContent = count;
+
+    localStorage.setItem("count", count);
     }
 
 
     console.log(selected);
     console.log(correctAnswer)
+    console.log(count)
 
     // if answer is Migos, alert or return correct
 
