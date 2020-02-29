@@ -66,22 +66,36 @@ for (var i = 0; i < questions[0].potential_answers.length; i++) {
 }
 
 
-// Function that tells user whether or not the answer is correct
-function seeResults() {
+// // Function that tells user whether or not the answer is correct
+// function seeResults() {
 
-    // when called by whichever button choice is selected, get the data index attribute of the button
-    var selected = btn.getAttribute("data-index");
+//     // when called by whichever button choice is selected, get the data index attribute of the button
+//     var selected = btn.getAttribute("data-index");
 
-    // if answer is Migos, alert or return correct
+//     // if answer is Migos, alert or return correct
 
     
-    // if answer is anything other than Migos, alert or return wrong
+//     // if answer is anything other than Migos, alert or return wrong
 
 
    
-};
+// };
 
-console.log(seeResults())
+function quizTimer() {
+    var timeLeft = 60;
+    var timerEl = document.getElementById("timer-element");
+    var timeInterval = setInterval(function() {
+      timerEl.textContent = timeLeft + " seconds remaining";
+      timeLeft--;
+  
+      if (timeLeft === 0) {
+        timerEl.textContent = "";
+        clearInterval(timeInterval);
+      }
+  
+    }, 1000);
+  }
+quizTimer();
 
 
 
