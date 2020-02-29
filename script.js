@@ -8,20 +8,7 @@ var questions = [
 
     {
         question: "What exactly was on fleek in its first known use?",
-        potential_answers: [
-            {
-                0: "an outfit"
-            },
-            {
-                1: "makeup"
-            },
-            {
-                2: "eyebrows"
-            },
-            {
-                3: "box braids"
-            },
-        ],
+        potential_answers: ["an outfit", "makeup", "eyebrows", "box braids"],
         correct_answer: "eyebrows"
     },
 ]
@@ -33,18 +20,17 @@ var currentQuestion = questions[0].question;
 var correctAnswer = questions[0].correct_answer;
 var userAnswer;
 
+var newH = document.createElement("h1")
+newH.innerText = currentQuestion;
+quizContent.append(newH);
+
 
 
 for (var i = 0; i < questions[0].potential_answers.length; i++) {
-    
-   var newH = document.createElement("h1");
 
-    var newP = document.createElement("p");
+    // var newP = document.createElement("p");
 
    var btn = document.createElement("button");
-
-
-   newH.innerText = currentQuestion;
 
    
 //    Have each button be a choice in the array
@@ -55,47 +41,64 @@ for (var i = 0; i < questions[0].potential_answers.length; i++) {
 
 
     // add event listener that, when clicked, calls on function that reveals whether or not answer is correct.
-    //  btn.addEventListener("click", seeResults);
+
+    btn.addEventListener("click", seeResults);
+
 
     
-     newP.appendChild(btn);
+    quizContent.append(btn);
 
-     newH.appendChild(newP);
+    //  newH.appendChild(newP);
 
-     quizContent.append(newH);
 }
 
 
+
 // // Function that tells user whether or not the answer is correct
-// function seeResults() {
+function seeResults(event) {
 
-//     // when called by whichever button choice is selected, get the data index attribute of the button
-//     var selected = btn.getAttribute("data-index");
+    // when called by whichever button choice is selected, get the data index attribute of the button
+    // var selected = event.target.getAttribute("data-index");
 
-//     // if answer is Migos, alert or return correct
+    var selected = event.target.textContent;
+
+    if(selected === correctAnswer){
+        // return "Correct!"
+        alert("Correct!")
+    }
+    else {
+        // return "Incorrect!"
+        alert("Incorrect!")
+    }
+
+
+    console.log(selected);
+    console.log(correctAnswer)
+
+    // if answer is Migos, alert or return correct
 
     
-//     // if answer is anything other than Migos, alert or return wrong
+    // if answer is anything other than Migos, alert or return wrong
 
 
    
-// };
+};
 
-function quizTimer() {
-    var timeLeft = 60;
-    var timerEl = document.getElementById("timer-element");
-    var timeInterval = setInterval(function() {
-      timerEl.textContent = timeLeft + " seconds remaining";
-      timeLeft--;
+// function quizTimer() {
+//     var timeLeft = 60;
+//     var timerEl = document.getElementById("timer-element");
+//     var timeInterval = setInterval(function() {
+//       timerEl.textContent = timeLeft + " seconds remaining";
+//       timeLeft--;
   
-      if (timeLeft === 0) {
-        timerEl.textContent = "";
-        clearInterval(timeInterval);
-      }
+//       if (timeLeft === 0) {
+//         timerEl.textContent = "";
+//         clearInterval(timeInterval);
+//       }
   
-    }, 1000);
-  }
-quizTimer();
+//     }, 1000);
+//   }
+// quizTimer();
 
 
 
