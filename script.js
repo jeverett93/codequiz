@@ -1,6 +1,14 @@
 var quizContent = document.getElementById("question-content");
 var score = 0;
 var highscore = localStorage.getItem(".high-scores");
+var startButton = document.getElementById("start-button")
+startButton.addEventListener("click", startQuiz)
+var quizContainer = document.getElementById("quiz-container")
+// var quizState = 'new'
+var questionNum = 0
+var timer
+var quizTime = 60
+var timerEl = document.getElementById("timeClock")
 
 var questions = [
     {
@@ -17,105 +25,63 @@ var questions = [
 ]
 
 
+function startQuiz() {
 
-
-var currentQuestion = questions[0].question;
-var correctAnswer = questions[0].correct_answer;
-var userAnswer;
-
-var newH = document.createElement("h1")
-newH.innerText = currentQuestion;
-quizContent.append(newH);
-
-
-
-for (var i = 0; i < questions[0].potential_answers.length; i++) {
-
-    // var newP = document.createElement("p");
-
-   var btn = document.createElement("button");
-
-   
-//    Have each button be a choice in the array
-   btn.innerText = questions[0].potential_answers[i];
-
-   // give data attributes to question choices
-     btn.setAttribute("data-index", i);
-
-
-    // add event listener that, when clicked, calls on function that reveals whether or not answer is correct.
-
-    btn.addEventListener("click", seeResults);
-
-
-    
-    quizContent.append(btn);
-
-    //  newH.appendChild(newP);
-
+  //render first question
+  renderQuestion()
+  startTimer()
 }
 
+function startTimer() {
+  timer = setInterval(()=>{
+    quizTime --
+    timerEl.innerText = quizTime
+  },1000)
+}
 
+function renderQuestion() {
+  // make a button for each answer
+  var buttons = questions[questionNum].potential_answers.map(function (answer) {
+    return `<button onclick="answerQuestion('${answer}')" >${answer}</button>`
+  })
 
+  quizContainer.innerHTML = `
+    <h1>${questions[questionNum].question}</h1>
+    ${buttons.join("")}
+  `
+}
 
+function answerQuestion(answer) {
+  if (answer === questions[questionNum].correct_answer) {
+    score ++
+  } else {
+    score --
+    quizTime -= 10
+  }
 
-// // Function that tells user whether or not the answer is correct
-function seeResults(event) {
+  questionNum ++
+  console.log(questionNum)
+  console.log(score)
+  if (questionNum === questions.length) {
+    endQuiz()
+  } else {
+    renderQuestion()
+  }
+}
 
-    // when called by whichever button choice is selected, get the data index attribute of the button
-    // var selected = event.target.getAttribute("data-index");
-
-    var selected = event.target.textContent;
-
-    if(selected === correctAnswer){
-        // return "Correct!"
-        alert("Correct!")
-
-    score++;
-    // counter.textContent = count;
-
-    localStorage.setItem(".high-scores", score);
-    }
-    else {
-        // return "Incorrect!"
-        alert("Incorrect!")
-
-    score--;
-    // counter.textContent = count;
-
-    localStorage.setItem(".high-scores", score);
-    }
-
-
-    console.log(selected);
-    console.log(correctAnswer)
-    console.log(score)
-    console.log(highscore)
-
-    // if answer is Migos, alert or return correct
-
-    
-    // if answer is anything other than Migos, alert or return wrong
-
-
-   
-};
-
-// function quizTimer() {
-//     var timeLeft = 60;
-//     var timerEl = document.getElementById("timer-element");
-//     var timeInterval = setInterval(function() {
-//       timerEl.textContent = timeLeft + " seconds remaining";
-//       timeLeft--;
-  
-//       if (timeLeft === 0) {
-//         timerEl.textContent = "";
-//         clearInterval(timeInterval);
-//       }
-  
-//     }, 1000);
-//   }
-// quizTimer();
+function endQuiz() {
+  quizContainer.innerHTML = `
+    Your score is ${score}
+  `
+  clearInterval(timer)
+  // add input and button and have button save highscore with the following logic
+  // get the highScores from localStorage
+  // ensure that there was a value in localStorage
+  // use JSON.parse to get existing object if available
+  // create empty object if not
+  // add user score info to object
+  // JSON.stringify the object and save it to localStorage
+}
 
 
 
