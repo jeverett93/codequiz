@@ -1,4 +1,7 @@
 var quizContent = document.getElementById("question-content");
+var score = 0;
+var highscore = localStorage.getItem(".high-scores");
+
 var questions = [
     {
         question: "Who invented the dab?",
@@ -52,7 +55,7 @@ for (var i = 0; i < questions[0].potential_answers.length; i++) {
 
 }
 
-var count = localStorage.getItem("count");
+
 
 
 
@@ -68,25 +71,26 @@ function seeResults(event) {
         // return "Correct!"
         alert("Correct!")
 
-    count++;
+    score++;
     // counter.textContent = count;
 
-    localStorage.setItem("count", count);
+    localStorage.setItem(".high-scores", score);
     }
     else {
         // return "Incorrect!"
         alert("Incorrect!")
 
-    count--;
+    score--;
     // counter.textContent = count;
 
-    localStorage.setItem("count", count);
+    localStorage.setItem(".high-scores", score);
     }
 
 
     console.log(selected);
     console.log(correctAnswer)
-    console.log(count)
+    console.log(score)
+    console.log(highscore)
 
     // if answer is Migos, alert or return correct
 
