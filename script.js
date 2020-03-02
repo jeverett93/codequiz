@@ -1,6 +1,5 @@
-var quizContent = document.getElementById("question-content");
 var score = 0;
-var highscore = localStorage.getItem(".high-scores");
+var highscore = localStorage.getItem("highscores");
 var startButton = document.getElementById("start-button")
 startButton.addEventListener("click", startQuiz)
 var quizContainer = document.getElementById("quiz-container")
@@ -9,6 +8,7 @@ var questionNum = 0
 var timer
 var quizTime = 60
 var timerEl = document.getElementById("timeClock")
+var scoreKeep = [];
 
 var questions = [
     {
@@ -59,6 +59,8 @@ function answerQuestion(answer) {
     quizTime -= 10
   }
 
+
+
   questionNum ++
   console.log(questionNum)
   console.log(score)
@@ -70,10 +72,20 @@ function answerQuestion(answer) {
 }
 
 function endQuiz() {
+    // create input element and button
+    // Tells user what they're score is and allows them to input their initials.
+
+    localStorage.setItem("highscores", score);
+    scoreKeep.push(score)
+  
+    console.log(scoreKeep)
+    console.log(localStorage)
+    
   quizContainer.innerHTML = `
     Your score is ${score}
   `
   clearInterval(timer)
+    //add button that restarts quiz 
   // add input and button and have button save highscore with the following logic
   // get the highScores from localStorage
   // ensure that there was a value in localStorage
