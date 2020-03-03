@@ -3,8 +3,6 @@ var highscore = localStorage.getItem("highscores");
 var startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startQuiz);
 var quizContainer = document.getElementById("quiz-container");
-// var newP = document.createElement("p");
-// quizContainer.appendChild(newP);
 var questionNum = 0;
 var timer;
 var quizTime = 60;
@@ -84,7 +82,7 @@ function endQuiz() {
     var newBtn = document.createElement("button");
     var newHead = document.createElement("h4");
     inputName.setAttribute("type", "text");
-    inputName.setAttribute("value", "Enter your initials please");
+    inputName.setAttribute("placeholder", "Enter your initials please");
     newBtn.innerText = "Submit";
     newHead.innerHTML = "Your score is " + score;
     
