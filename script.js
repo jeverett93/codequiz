@@ -21,6 +21,21 @@ var questions = [
         potential_answers: ["an outfit", "makeup", "eyebrows", "box braids"],
         correct_answer: "eyebrows"
     },
+    {
+      question: "What movie does the phrase “Bye Felicia” come from?",
+      potential_answers: ["Die Hard", "Big Mama's House", "Friday", "Barbershop"],
+      correct_answer: "Friday"
+     },
+    {
+    question: "When are you supposed to clap?",
+    potential_answers: ["on the 1 and the 3", "when a plane lands", "after the fat lady sings", "on the 2 and the 4"],
+    correct_answer: "on the 2 and the 4"
+    },
+    {
+    question: "What did the five fingers say to the face?",
+    potential_answers: ["Hi!", "Slap!", "You want a knuckle sandwich?", "You can't see me!"],
+    correct_answer: "Slap!"
+    },
 ]
 
 
@@ -60,8 +75,6 @@ function answerQuestion(answer) {
     alert("Incorrect!");
   }
 
-//   quizContainer.appendChild(newP);
-//   console.log(newP)
 
 
   questionNum ++;
@@ -93,18 +106,13 @@ function endQuiz() {
     quizContainer.appendChild(newBtn);
     
 
-
-    console.log(inputName)
-
-    localStorage.setItem("highscores", score);
     scoreKeep.push(score)
+    localStorage.setItem("highscores", scoreKeep);
+    
   
     console.log(scoreKeep)
     console.log(localStorage)
     
-  // quizContainer.innerHTML = `
-  //   Your score is ${score}
-  // `
   clearInterval(timer)
 
 
