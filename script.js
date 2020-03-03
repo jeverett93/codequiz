@@ -81,14 +81,19 @@ function endQuiz() {
     // Tells user what they're score is and allows them to input their initials.
 
     var inputName = document.createElement("input");
+    var newBtn = document.createElement("button");
+    var newHead = document.createElement("h4");
     inputName.setAttribute("type", "text");
-    // var newBtn = document.createElement("button");
-    // // inputName.innerText = "Input Initials"
-    // newBtn.innerText = "Submit"
-
-    // inputName.appendChild(newBtn);
+    inputName.setAttribute("value", "Enter your initials please");
+    newBtn.innerText = "Submit";
+    newHead.innerHTML = "Your score is " + score;
+    
     quizContainer.innerHTML = "";
+    quizContainer.appendChild(newHead
+      );
     quizContainer.appendChild(inputName);
+    quizContainer.appendChild(newBtn);
+    
 
 
     console.log(inputName)
