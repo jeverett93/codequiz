@@ -1,13 +1,14 @@
 var score = 0;
 var highscore = localStorage.getItem("highscores");
-var startButton = document.getElementById("start-button")
-startButton.addEventListener("click", startQuiz)
-var quizContainer = document.getElementById("quiz-container")
-// var quizState = 'new'
-var questionNum = 0
-var timer
-var quizTime = 60
-var timerEl = document.getElementById("timeClock")
+var startButton = document.getElementById("start-button");
+startButton.addEventListener("click", startQuiz);
+var quizContainer = document.getElementById("quiz-container");
+// var newP = document.createElement("p");
+// quizContainer.appendChild(newP);
+var questionNum = 0;
+var timer;
+var quizTime = 60;
+var timerEl = document.getElementById("timeClock");
 var scoreKeep = [];
 
 var questions = [
@@ -53,15 +54,19 @@ function renderQuestion() {
 
 function answerQuestion(answer) {
   if (answer === questions[questionNum].correct_answer) {
-    score ++
+    score ++;
+    alert("Correct!");
   } else {
-    score --
-    quizTime -= 10
+    // score --
+    quizTime -= 10;
+    alert("Incorrect!");
   }
 
+//   quizContainer.appendChild(newP);
+//   console.log(newP)
 
 
-  questionNum ++
+  questionNum ++;
   console.log(questionNum)
   console.log(score)
   if (questionNum === questions.length) {
@@ -75,16 +80,31 @@ function endQuiz() {
     // create input element and button
     // Tells user what they're score is and allows them to input their initials.
 
+    var inputName = document.createElement("input");
+    inputName.setAttribute("type", "text");
+    // var newBtn = document.createElement("button");
+    // // inputName.innerText = "Input Initials"
+    // newBtn.innerText = "Submit"
+
+    // inputName.appendChild(newBtn);
+    quizContainer.innerHTML = "";
+    quizContainer.appendChild(inputName);
+
+
+    console.log(inputName)
+
     localStorage.setItem("highscores", score);
     scoreKeep.push(score)
   
     console.log(scoreKeep)
     console.log(localStorage)
     
-  quizContainer.innerHTML = `
-    Your score is ${score}
-  `
+  // quizContainer.innerHTML = `
+  //   Your score is ${score}
+  // `
   clearInterval(timer)
+
+
     //add button that restarts quiz 
   // add input and button and have button save highscore with the following logic
   // get the highScores from localStorage
