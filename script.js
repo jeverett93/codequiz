@@ -8,9 +8,6 @@ var quizContainer = document.getElementById("quiz-container");
 var questionNum = 0;
 var timer;
 var quizTime = 60;
-if (quizTime <= 0) {
-    endQuiz();
-  };
 var timerEl = document.getElementById("timeClock");
 var scoreKeep = [];
 
@@ -57,12 +54,14 @@ function startTimer() {
   timer = setInterval(()=>{
     quizTime --
     timerEl.innerText = quizTime
+
+    // ends quiz if no time left
+    if (quizTime <= 0) {
+      endQuiz();
+    };
   },1000)
 
-  // if (quizTime <= 0) {
-  //   clearInterval(timer);
-  //   endQuiz();
-  // };
+  
 }
 
 // function for questions that makes each answer choice a button as well as making the questions a header
