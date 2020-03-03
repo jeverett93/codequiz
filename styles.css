@@ -1,0 +1,6 @@
+
+/* ensures time clock is always seen by user across screen size/disables the collapse feature in navbar */
+.navbar-collapse {
+    display: block!important;
+  };
+  
