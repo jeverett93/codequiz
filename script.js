@@ -1,5 +1,5 @@
 var score = 0;
-var highscore = localStorage.getItem("highscores");
+// var highscore = localStorage.getItem("highscores");
 var startButton = document.getElementById("start-button");
 
 // starts quiz when begin is clicked in HTML
@@ -9,7 +9,10 @@ var questionNum = 0;
 var timer;
 var quizTime = 60;
 var timerEl = document.getElementById("timeClock");
+var initialInput = [];
 var scoreKeep = [];
+console.log(startQuiz)
+
 
 // defines quiz questions as an object to be called on later
 var questions = [
@@ -110,25 +113,29 @@ function endQuiz() {
     var newHead = document.createElement("h4");
     inputName.setAttribute("type", "text");
     inputName.setAttribute("placeholder", "Enter your initials please");
+    inputName.setAttribute("id", "userInput");
     newBtn.innerText = "Submit";
     newHead.innerHTML = "Your score is " + score;
 
-    // newBtn.addEventListener("click", addStorage)
+    newBtn.addEventListener("click", () => {
+      scoreKeep.push(score);
+      var userNameVal = document.getElementById("userInput").value;
+      scoreKept.push(userNameVal);
+      alert(userNameVal);
+      highScores();
+    });
     
     // puts this all on one page
     quizContainer.innerHTML = "";
-    quizContainer.appendChild(newHead
-      );
+    quizContainer.appendChild(newHead);
     quizContainer.appendChild(inputName);
     quizContainer.appendChild(newBtn);
     
 
-    scoreKeep.push(score);
-    localStorage.setItem("highscores", scoreKeep);
+    // scoreKeep.push(score);
+    // localStorage.setItem("highscores", scoreKeep);
     
   
-    console.log(scoreKeep);
-    console.log(localStorage);
     
     // stops timer when quiz ends
   clearInterval(timer)
@@ -142,6 +149,10 @@ function endQuiz() {
   // create empty object if not
   // add user score info to object
   // JSON.stringify the object and save it to localStorage
+}
+
+function highScores() {
+
 }
 
 
