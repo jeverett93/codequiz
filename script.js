@@ -11,14 +11,6 @@ var timerEl = document.getElementById("timeClock");
 
 // score keeper
 var score = 0;
-
-// high scores
-// var scoreKeep = [
-//   {
-
-//   }
-// ];
-
 const savedArray = JSON.parse(localStorage.getItem("highscores")) || [];
 
 
@@ -154,8 +146,6 @@ function endQuiz() {
 // populates high score page
 function highScores() {
   quizContainer.innerHTML = "";
-
-  // localStorage.setItem("highscores", JSON.stringify(scoreKeep));
 
   localStorage.setItem("highscores", JSON.stringify(savedArray));
 
