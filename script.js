@@ -1,15 +1,13 @@
-
-// var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
-var startButton = document.getElementById("start-button");
-
 // starts quiz when begin is clicked in HTML
+var startButton = document.getElementById("start-button");
 startButton.addEventListener("click", startQuiz);
+// allows me to populate quiz content dynamically
 var quizContainer = document.getElementById("quiz-container");
-var questionNum = 0;
+
+// quiz timer
 var timer;
 var quizTime = 60;
 var timerEl = document.getElementById("timeClock");
-// var initialInput = [];
 
 // score keeper
 var score = 0;
@@ -25,6 +23,7 @@ var savedArray = JSON.parse(localStorage.getItem("highscores"));
 
 
 // defines quiz questions as an object to be called on later
+var questionNum = 0;
 var questions = [
     {
         question: "Who invented the dab?",
@@ -132,7 +131,6 @@ function endQuiz() {
       var userNameVal = document.getElementById("userInput").value;
       scoreKeep.push(userNameVal);
       alert(userNameVal);
-      // localStorage.setItem("highscores", scoreKeep);
       highScores();
     });
     
@@ -142,9 +140,6 @@ function endQuiz() {
     quizContainer.appendChild(inputName);
     quizContainer.appendChild(newBtn);
     
-
-    // scoreKeep.push(score);
-    // localStorage.setItem("highscores", scoreKeep);
     
   
     
@@ -152,16 +147,9 @@ function endQuiz() {
   clearInterval(timer)
 
 
-    //add button that restarts quiz 
-  // add input and button and have button save highscore with the following logic
-  // get the highScores from localStorage
-  // ensure that there was a value in localStorage
-  // use JSON.parse to get existing object if available
-  // create empty object if not
-  // add user score info to object
-  // JSON.stringify the object and save it to localStorage
 }
 
+// populates high score page
 function highScores() {
   quizContainer.innerHTML = "";
 
