@@ -13,13 +13,13 @@ var timerEl = document.getElementById("timeClock");
 var score = 0;
 
 // high scores
-var scoreKeep = [
-  {
+// var scoreKeep = [
+//   {
 
-  }
-];
+//   }
+// ];
 
-var savedArray = JSON.parse(localStorage.getItem("highscores"));
+const savedArray = JSON.parse(localStorage.getItem("highscores")) || [];
 
 
 // defines quiz questions as an object to be called on later
@@ -127,9 +127,11 @@ function endQuiz() {
     newHead.innerHTML = "Your score is " + score;
 
     newBtn.addEventListener("click", () => {
-      scoreKeep.push(score);
+      // scoreKeep.push(score);
       var userNameVal = document.getElementById("userInput").value;
-      scoreKeep.push(userNameVal);
+      // scoreKeep.push(userNameVal);
+
+      savedArray.push("Name: " + userNameVal + "  Score: " + score);
       alert(userNameVal);
       highScores();
     });
@@ -153,7 +155,9 @@ function endQuiz() {
 function highScores() {
   quizContainer.innerHTML = "";
 
-  localStorage.setItem("highscores", JSON.stringify(scoreKeep));
+  // localStorage.setItem("highscores", JSON.stringify(scoreKeep));
+
+  localStorage.setItem("highscores", JSON.stringify(savedArray));
 
   quizContainer.innerText = "High Scores: ";
 
@@ -162,7 +166,7 @@ function highScores() {
 
   for(var i=0; i < savedArray.length; i++) {
       var allTheScores = document.createElement('li');
-      allTheScores.innerText = (savedArray);
+      allTheScores.innerText = (savedArray[i]);
       scoreList.appendChild(allTheScores);
   }
 
