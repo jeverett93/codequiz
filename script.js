@@ -30,7 +30,7 @@ var questions = [
     },
     {
       question: "What movie does the phrase “Bye Felicia” come from?",
-      potential_answers: ["Die Hard", "Big Mama's House", "Friday", "Barbershop"],
+      potential_answers: ["Die Hard", "Baby Boy", "Friday", "Barbershop"],
       correct_answer: "Friday"
      },
     {
@@ -40,7 +40,7 @@ var questions = [
     },
     {
     question: "What did the five fingers say to the face?",
-    potential_answers: ["Hi!", "Slap!", "You want a knuckle sandwich?", "You can't see me!"],
+    potential_answers: ["Hi!", "Slap!", "You want a knuckle sandwich?", "You cannot see me!"],
     correct_answer: "Slap!"
     },
 ]
