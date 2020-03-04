@@ -1,5 +1,5 @@
-var score = 0;
-// var highscore = localStorage.getItem("highscores");
+
+// var highscore = JSON.parse(localStorage.getItem("highScores")) || [];
 var startButton = document.getElementById("start-button");
 
 // starts quiz when begin is clicked in HTML
@@ -9,9 +9,19 @@ var questionNum = 0;
 var timer;
 var quizTime = 60;
 var timerEl = document.getElementById("timeClock");
-var initialInput = [];
-var scoreKeep = [];
-console.log(startQuiz)
+// var initialInput = [];
+
+// score keeper
+var score = 0;
+
+// high scores
+var scoreKeep = [
+  {
+
+  }
+];
+
+var savedArray = JSON.parse(localStorage.getItem("highscores"));
 
 
 // defines quiz questions as an object to be called on later
@@ -120,8 +130,9 @@ function endQuiz() {
     newBtn.addEventListener("click", () => {
       scoreKeep.push(score);
       var userNameVal = document.getElementById("userInput").value;
-      scoreKept.push(userNameVal);
+      scoreKeep.push(userNameVal);
       alert(userNameVal);
+      // localStorage.setItem("highscores", scoreKeep);
       highScores();
     });
     
@@ -152,8 +163,28 @@ function endQuiz() {
 }
 
 function highScores() {
+  quizContainer.innerHTML = "";
+
+  localStorage.setItem("highscores", JSON.stringify(scoreKeep));
+
+  quizContainer.innerText = "High Scores: ";
+
+  var scoreList = document.createElement('ul');
+  quizContainer.appendChild(scoreList);
+
+  for(var i=0; i < savedArray.length; i++) {
+      var allTheScores = document.createElement('li');
+      allTheScores.innerText = (savedArray);
+      scoreList.appendChild(allTheScores);
+  }
+
+  console.log(localStorage); 
+  console.log(scoreKept);
 
 }
+
+  
+
 
 
 
