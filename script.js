@@ -12,6 +12,7 @@ var timerEl = document.getElementById("timeClock");
 // score keeper
 var score = 0;
 const savedArray = JSON.parse(localStorage.getItem("highscores")) || [];
+savedArray.splice(10);
 
 
 // defines quiz questions as an object to be called on later
@@ -158,8 +159,6 @@ function highScores() {
       allTheScores.innerText = (savedArray[i]);
       scoreList.appendChild(allTheScores);
   }
-
-
 
 }
 
