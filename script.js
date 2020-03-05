@@ -12,10 +12,10 @@ var timerEl = document.getElementById("timeClock");
 // score keeper
 var score = 0;
 const savedArray = JSON.parse(localStorage.getItem("highscores")) || [];
-var sortedScores = savedArray.sort(function(a, b){
-  return b.score - a.score});
+// var sortedScores = savedArray.sort(function(a, b){
+//   return b.score - a.score});
 
-  console.log(sortedScores);
+//   console.log(sortedScores);
 
 
 // defines quiz questions as an object to be called on later
@@ -163,6 +163,11 @@ function highScores() {
       allTheScores.innerText = (savedArray[i]);
       scoreList.appendChild(allTheScores);
   }
+
+  savedArray.sort(function(a, b){
+    return b.score - a.score});
+
+  savedArray.splice(5);
 
   console.log(localStorage); 
 
