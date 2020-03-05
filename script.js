@@ -12,10 +12,6 @@ var timerEl = document.getElementById("timeClock");
 // score keeper
 var score = 0;
 const savedArray = JSON.parse(localStorage.getItem("highscores")) || [];
-// var sortedScores = savedArray.sort(function(a, b){
-//   return b.score - a.score});
-
-//   console.log(sortedScores);
 
 
 // defines quiz questions as an object to be called on later
@@ -98,8 +94,7 @@ function answerQuestion(answer) {
 
   // Makes sure each question continues to pop up dynamically.
   questionNum ++;
-  console.log(questionNum)
-  console.log(score)
+
 
   // triggers end quiz function if user completes quiz question or time runs out
   if (questionNum === questions.length) {
@@ -164,12 +159,7 @@ function highScores() {
       scoreList.appendChild(allTheScores);
   }
 
-  savedArray.sort(function(a, b){
-    return b.score - a.score});
 
-  savedArray.splice(5);
-
-  console.log(localStorage); 
 
 }
 

@@ -1,6 +1,8 @@
+Black History Quiz
+
 Live Link: https://jeverett93.github.io/codequiz/
 
-About: This is an application that offers the user a timed quiz that stores scores and orders them from highest to lowest. A correct answer adds time, and an incorrect answer decreases the time given to take the quiz.
+About: This is an application that offers the user a timed quiz. An incorrect answer decreases the time given to take the quiz.The suser can view high scores at the end of the quiz or at any other time. They can also start over at any time.
 
 Contributors: jeverett93.github.io
 
